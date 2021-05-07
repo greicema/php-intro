@@ -1,58 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Formulário de inscrição</title>
+</head>
 
-$classes = [];
-$classes[] = 'infantil';
-$classes[] = 'adolescente';
-$classes[] = 'adulto';
-$classes[] = 'idoso';
-$classes[] = 'nao-compete';
+<body>
 
-//print_r($classes);
+<p>FORMULÁRIO PARA INSCRIÇÃO DE COMPETIDORES</p>    
+    <form action="script.php" method="post">
+        <p>Seu nome: <input type="text" name="name"/></p>
+        <p>Sua idade: <input type="text" name="age"/></p>        
+        <p><input type="submit"/></p>        
+    </form>
 
-$name = 'Lucas';
-$age = 2;
+</body>
 
-//var_dump($name); o var_dump exibe infomações das variáveis
-//var_dump($age);
-
-if($age >= 6 && $age <= 12){
-    for ($i = 0; $i <= count($classes); $i++){
-        if($classes[$i] == 'infantil'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria infantil';
-        }
-    }
-}
-
-else if($age >= 13 && $age <= 18){
-    for ($i = 0; $i <= count($classes); $i++){
-        if($classes[$i] == 'adolescente'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria adolescente';
-        }
-    }
-}
-
-else if($age >= 60){
-    for ($i = 0; $i <= count($classes); $i++){
-        if($classes[$i] == 'idoso'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria idoso';
-        }
-    }
-}
-
-else if($age >=19 && $age <= 59){
-    for ($i = 0; $i <= count($classes); $i++){
-        if($classes[$i] == 'adulto'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria adulto';
-        }
-    }
-}
-
-else{
-    for ($i = 0; $i <= count($classes); $i++){
-        if($classes[$i] == 'nao-compete'){
-            echo 'O(a) nadador(a) ', $name, ' não tem idade para competir';
-        }
-    }
-}
-
-//para exibir -> http://localhost/php-training/
+</html>
