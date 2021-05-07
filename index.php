@@ -9,7 +9,7 @@ $classes[] = 'nao-compete';
 
 //print_r($classes);
 
-$name = 'Eduardo';
+$name = 'Lucas';
 $age = 2;
 
 //var_dump($name); o var_dump exibe infomações das variáveis
