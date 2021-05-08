@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include "services/messageServiceSession.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +17,15 @@
 <p>FORMULÁRIO PARA INSCRIÇÃO DE COMPETIDORES</p>    
     <form action="script.php" method="post">
     <?php
-        $errorMessage = isset($_SESSION['error-message']) ? $_SESSION['error-message'] : '';
-        if(!empty($errorMessage)){
-            echo $errorMessage;
-        }
-
-        $successMessage = isset($_SESSION['success-message']) ? $_SESSION['success-message'] : '';
+        $successMessage = getSuccessMessage();
         if(!empty($successMessage)){
             echo $successMessage;
         }
+        
+        $errorMessage = getErrorMessage();
+        if(!empty($errorMessage)){
+            echo $errorMessage;
+        }        
     ?>
         <p>Seu nome: <input type="text" name="name"/></p>
         <p>Sua idade: <input type="text" name="age"/></p>        
