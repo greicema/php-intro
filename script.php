@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $classes = [];
 $classes[] = 'child';
@@ -13,35 +14,47 @@ $name = $_POST['name'];
 $age = $_POST['age'];
 
 //empty() verifica se o campo se resposta está vazio
-if(empty($name) || empty($age)){
-    echo 'Nenhum campo pode estar vazio.';
+if(empty($name)){
+    $_SESSION['error-message'] = 'O campo de nome pode estar vazio.';
+    header('location: index.php');
+    return;
+}
+
+else if(empty($age)){
+    $_SESSION['error-message'] = 'O campo de idade pode estar vazio.';
+    header('location: index.php');
     return;
 }
 
 //strlen conta o número de caracteres em uma string
-if(strlen($name) <3 ){
-    echo 'O nome deve conter mais de 3 caracteres.';
+else if(strlen($name) <3 ){
+    $_SESSION['error-message'] = 'O nome deve conter mais de 3 caracteres.';
+    header('location: index.php');
     return;
 }
 
-if(strlen($name) >40 ){
-    echo 'O nome é muito extenso';
+else if(strlen($name) >40 ){
+    $_SESSION['error-message'] = 'O nome é muito extenso';
+    header('location: index.php');
     return;
 }
 
-if(strlen($age) >2){
-    echo 'Digite a idade corretamente.';
+else if(strlen($age) >2){
+    $_SESSION['error-message'] = 'Digite a idade corretamente.';
+    header('location: index.php');
     return;
 }
 
 //is_numeric serve para identificar números
-if(is_numeric($name)){
-    echo 'O nome não pode conter números';
+else if(is_numeric($name)){
+    $_SESSION['error-message'] = 'O nome não pode conter números';
+    header('location: index.php');
     return;
 }
 
-if(!is_numeric($age)){
-    echo 'A idade não poder letras.';
+else if(!is_numeric($age)){
+    $_SESSION['error-message'] = 'A idade não poder letras.';
+    header('location: index.php');
     return;
 }
 
@@ -51,7 +64,9 @@ var_dump($age);*/
 if($age >= 6 && $age <= 12){
     for ($i = 0; $i <= count($classes); $i++){
         if($classes[$i] == 'child'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria infantil';
+            $_SESSION['success-message'] = 'O(a) nadador(a)';  $name;  'compete na categoria infantil'; //o vscode não está aceitando a vírgula e compromete o funcionamento de tudo
+            header('location: index.php');
+            return;
         }
     }
 }
@@ -59,7 +74,9 @@ if($age >= 6 && $age <= 12){
 else if($age >= 13 && $age <= 18){
     for ($i = 0; $i <= count($classes); $i++){
         if($classes[$i] == 'tee'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria adolescente';
+            $_SESSION['success-message'] = 'O(a) nadador(a) '; $name; ' compete na categoria adolescente';
+            header('location: index.php');
+            return;
         }
     }
 }
@@ -67,7 +84,9 @@ else if($age >= 13 && $age <= 18){
 else if($age >=19 && $age <= 59){
     for ($i = 0; $i <= count($classes); $i++){
         if($classes[$i] == 'adult'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria adulto';
+            $_SESSION['success-message'] = 'O(a) nadador(a) '; $name; ' compete na categoria adulto';
+            header('location: index.php');
+            return;            
         }
     }
 }
@@ -75,7 +94,9 @@ else if($age >=19 && $age <= 59){
 else if($age >= 60){
     for ($i = 0; $i <= count($classes); $i++){
         if($classes[$i] == 'senior'){
-            echo 'O(a) nadador(a) ', $name, ' compete na categoria idoso';
+            $_SESSION['success-message'] = 'O(a) nadador(a) '; $name; ' compete na categoria idoso';
+            header('location: index.php');
+            return;            
         }
     }
 }
@@ -84,7 +105,9 @@ else if($age >= 60){
 else{
     for ($i = 0; $i <= count($classes); $i++){
         if($classes[$i] == 'not-applicable'){
-            echo 'O(a) nadador(a) ', $name, ' não tem idade para competir';
+            $_SESSION['success-message'] = 'O(a) nadador(a) '; $name; ' não tem idade para competir';
+            header('location: index.php');
+            return;
         }
     }
 }
